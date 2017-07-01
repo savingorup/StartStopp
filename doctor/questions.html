@@ -1,0 +1,79 @@
+﻿{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block scripts %}
+<script>
+$(function() {
+	$(".button").button();
+    $(".checkbox").click(function(){
+        var label = $("label[for='"+$(this).attr('id')+"']");
+        if (this.checked) {
+            label.text('[{% trans "YES" %}] ');
+        }
+        else {
+            label.text('[{% trans "no" %}] ');
+        }
+    });
+});
+
+</script>
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+#questgroup {
+	padding-left: 10px;
+	border-left: 1px solid #1C0E04;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Additional questions" %}</h1>
+
+<p>{% trans "Please answer a few additional questions" %}:</p>
+
+<form method="post">{% csrf_token %}
+
+<div id="questgroup">
+
+{% for q in questions %}
+	<p>	
+	    {% if q.code in questionentries %}
+	    <input class="checkbox" type="checkbox" id="check_{{ q.code }}" name="{{ q.code }}" checked="checked"/>
+        <label id="label_{{ q.code }}" for="check_{{ q.code }}">[{% trans "YES" %}]&nbsp;</label>
+	    {% else %}
+        <input class="checkbox" type="checkbox" id="check_{{ q.code }}" name="{{ q.code }}"/>
+        <label id="label_{{ q.code }}" for="check_{{ q.code }}">[{% trans "no" %}]&nbsp;</label>
+	    {% endif %}
+        {{ q.getDescription|safe }} 
+        {% if q.code == "V29" %}
+            <ul>
+            {% for dl in duplicates %}
+                <li>                
+                {% for dup in dl %}
+                    {% if forloop.last %}
+                        <b>{{ dup }}</b>
+                    {% else %}
+                        <b>{{ dup }}</b> in
+                    {% endif %}
+                {% endfor %}
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+	</p>
+{% endfor %}
+
+</div>
+
+<br/>
+<hr/>
+
+<input class="button" type="submit" name="next2" value="{% trans "NEXT" %} &gt;&gt;&gt;" />
+</form>
+
+
+{% endblock %}

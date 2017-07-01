@@ -1,0 +1,83 @@
+﻿{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load tz %}
+
+{% block scripts %}
+<script>
+$(function() {
+	$(".button").button();
+});
+</script>
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+    table.entries
+    {
+        border: 1px solid black;
+    }
+    tr.entries_row1
+    {
+        background-color: #F0F0F0;
+    }
+    tr.entries_row2
+    {
+        background-color: #FFF0FF;
+    }
+    .patientid
+    {
+        font-size: 120%;
+        font-weight: bold;
+        font-style: italic;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<a class="button" href="/doctor/{{ doctor.id }}"> &lt; &lt; &lt; &nbsp; {% trans "Back" %}</a>
+<hr/>
+
+<h1>
+  {% trans "Patient data" %} {{ patient.first_name }} {{ patient.last_name }}, {{ patient.year_of_birth}} - 
+  <span class="patientid">{{ patient.id }}</span>
+</h1>
+
+<p>
+    {% trans "Gender" %}: {{ patient.get_gender_display }}<br/>
+    {% trans "Contact" %}: {{ patient.contact|default:""|default_if_none:"" }}<br/>
+    {% if root %}
+        {% trans "Status" %}: {{ patient.get_status_display }}<br/>
+    {% endif %}    
+</p>
+
+<p><a class="button" href="{{ patient.id }}/add">{% trans "Add new entry" %}!</a></p>
+
+<table class="entries">
+	<tr>
+		<th>{% trans "Time of entry" %}</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+	{% for e in entries %}
+	<tr>
+		<td>
+        {% if root %}
+        <a href="/doctor/{{ doctor.id }}/{{ patient.id }}/{{ e.id }}">{{ e.dt|date:"d.m.Y H:i" }}</a>
+        {% else %}
+        {{ e.dt|date:"d.m.Y H:i" }}
+        {% endif %}
+        </td>
+		<td><a href="/doctor/{{ doctor.id }}/{{ patient.id }}/{{ e.id }}/entrydone.html">{% trans "View" %}</a></td>
+		<td>
+		{% if root %}
+			<a href="/doctor/{{ doctor.id }}/{{ patient.id }}/{{ e.id }}/delete.html">{% trans "Delete" %}</a>
+		{% else %}
+			&nbsp;
+		{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

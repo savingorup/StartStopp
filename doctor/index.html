@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+    table.doctors
+    {
+        /*border: 1px solid black;*/
+    }
+    th
+	{
+		background-color: blue;
+		color:white;
+		font-weight:bold;
+	}
+    tr.doctors_row1
+    {
+        background-color: #F0F0F0;
+    }
+    tr.doctors_row2
+    {
+        background-color: #FFF0FF;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>{% trans "Administration" %}</h1>
+
+<p>{% trans "Load new tables into database. Tables must be preloaded to server in doc subdirectory." %}<br/>
+<a href="loadDrugs">{% trans "LOAD DRUGS" %}!</a><br/>
+<a href="loadOther">{% trans "LOAD OTHER DATA" %}!</a>
+</p>
+<hr/>
+
+<p>{% trans "Export data to local file" %}: <a href="exportCsv">{% trans "PRESS HERE!" %}!</a><<p/>
+<hr/>
+
+<p>{% trans "Export antiholinergics to local file" %}: <a href="exportAH">{% trans "PRESS HERE!" %}!</a><<p/>
+<hr/>
+
+<form action="" method="post">{% csrf_token %}
+{{ findpacform }}
+<input type="submit" value='{% trans "FIND" %}' name="FIND_PAC" />
+</form>
+<p> <p/>
+
+<hr/>
+
+<form action="" method="post">{% csrf_token %}
+{{ findbydrugsform }}
+<input type="submit" value='{% trans "FIND" %}' name="FIND_BYQUERY" />
+</form>
+<p> <p/>
+
+<hr/>
+
+<h1>{% trans "Doctors - overview" %}</h1>
+
+<table>
+	<tr>
+		<th>{% trans "ID" %}</th>
+		<th>{% trans "Doctor" %}</th>
+		<th>{% trans "Num. patients" %}</th>
+        <th>{% trans "First entry" %}</th>
+	</tr>
+	{% for d in doctors %}
+	<tr>
+		<td>{{ d.id }}</td>
+		<td><a href="doctor/{{ d.id }}">{{ d.user.first_name }} {{ d.user.last_name }}</a></td>
+		<td>{{ d.patient__count }}</td>
+		<td>{{ d.entry_first|date:"d.m.Y" }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

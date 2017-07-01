@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+<div id="login">
+	<div class="header"></div>
+	<div id="login-form">
+	{% if form.errors %}
+		<p class="error">{% trans "Your username and password do not match. Please try again." %}</p>
+	{% endif %}
+
+		<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+		{% csrf_token %}
+			<div class="username-label">{% trans "Username" %}:</div>
+			<div class="username">{{ form.username }}</div>
+			<br />
+			<div class="password-label">{% trans "Password" %}:</div>
+			<div class="password">{{ form.password }}</div>
+			<br />
+			<div class="button-login">
+				<!--input type="submit" style="visibility: hidden;" value="login" /-->
+				<input type="submit" style="" value="{% trans "LOGIN" %}" />
+				<input type="hidden" name="next" value="{{ next }}" />
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+

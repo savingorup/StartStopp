@@ -1,0 +1,437 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-30 22:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3)\n"
+
+#: .\base.html:21 .\base.html.py:36
+msgid "START/STOPP Study"
+msgstr "Raziskava START/STOPP"
+
+#: .\base.html:29
+msgid "Logged in"
+msgstr "Prijavljen"
+
+#: .\base.html:30
+msgid "Logout"
+msgstr "Odjavi se"
+
+#: .\base.html:32
+msgid "Home"
+msgstr "Na začetek"
+
+#: .\doctor\addpatient.html:26
+msgid "Patient Data"
+msgstr "Podatki o pacientu"
+
+#: .\doctor\addpatient.html:30
+msgid "CANCEL"
+msgstr "PREKLIC"
+
+#: .\doctor\addpatient.html:31 .\doctor\entry.html:226
+msgid "NEXT"
+msgstr "NAPREJ"
+
+#: .\doctor\doctor.html:19
+msgid "Hello"
+msgstr "Pozdravljeni"
+
+#: .\doctor\doctor.html:21
+msgid "Your ID number is"
+msgstr "Vaša identifikacijska številka je"
+
+#: .\doctor\doctor.html:22
+msgid "You entered"
+msgstr "Vnesli ste že"
+
+#: .\doctor\doctor.html:22
+msgid "patients"
+msgstr "pacientov"
+
+#: .\doctor\doctor.html:24
+msgid "Enter new patient"
+msgstr "Vnos novega pacienta"
+
+#: .\doctor\doctor.html:27
+msgid "Patients - overview"
+msgstr "Seznam vnešenih pacientov"
+
+#: .\doctor\doctor.html:31 .\doctor\index.html:46
+msgid "ID"
+msgstr "ID"
+
+#: .\doctor\doctor.html:32 .\doctor\entrydone.html:41 .\doctor\models.py:51
+msgid "Patient"
+msgstr "Pacient"
+
+#: .\doctor\doctor.html:33
+msgid "Year of Birth"
+msgstr "Leto rojstva"
+
+#: .\doctor\doctor.html:34 .\doctor\patient.html:38 .\doctor\views.py:908
+msgid "Gender"
+msgstr "Spol"
+
+#: .\doctor\doctor.html:35 .\doctor\patient.html:39 .\doctor\views.py:909
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\doctor\doctor.html:36
+msgid "No. of Entries"
+msgstr "Število vnosov"
+
+#: .\doctor\doctor.html:37
+msgid "First Entry"
+msgstr "Prvi vnos"
+
+#: .\doctor\doctor.html:39 .\doctor\patient.html:41
+msgid "Status"
+msgstr "Status"
+
+#: .\doctor\doctor.html:58
+msgid "Add entry"
+msgstr "Dodaj vnos"
+
+#: .\doctor\doctor.html:60 .\doctor\patient.html:65
+msgid "Delete"
+msgstr "Brisanje"
+
+#: .\doctor\entry.html:104 .\doctor\patient.html:32
+msgid "Back"
+msgstr "Nazaj"
+
+#: .\doctor\entry.html:111 .\doctor\entrydone.html:101
+msgid "Medications"
+msgstr "Stalna terapija"
+
+#: .\doctor\entry.html:115 .\doctor\entry.html.py:128
+#: .\doctor\entrydone.html:104
+msgid "Medication"
+msgstr "Zdravilo"
+
+#: .\doctor\entry.html:115
+msgid ""
+"enter first few letters (for example <i>aspir</i> and select drug from drop-"
+"down list"
+msgstr ""
+"vpišete prve črke (npr. <i>aspir</i>) in izberete zdravilo iz padajočega "
+"seznama"
+
+#: .\doctor\entry.html:116 .\doctor\entry.html.py:129
+msgid "Patient knows"
+msgstr "Pacient ve"
+
+#: .\doctor\entry.html:116
+msgid "does patient know why they are prescribed this medication?"
+msgstr "ali pacient ve, zakaj jemlje to zdravilo"
+
+#: .\doctor\entry.html:117 .\doctor\entry.html.py:130
+#: .\doctor\entrydone.html:105
+msgid "Dose"
+msgstr "Doza"
+
+#: .\doctor\entry.html:117
+msgid ""
+"enter number of pills per time unit, for example <i>1,5</i>, or <i>3 x 1/2</"
+"i>, <i>4 x 2</i> etc."
+msgstr ""
+"vpišete število tablet na časovno enoto (npr. <i>1,5</i>) ali pa <i>3 x 1/2</"
+"i>, <i>4 x 2</i> itd."
+
+#: .\doctor\entry.html:118 .\doctor\entry.html.py:131
+#: .\doctor\entrydone.html:106
+msgid "Time.unit"
+msgstr "Čas.enota"
+
+#: .\doctor\entry.html:118
+msgid "enter time unit for which you prescribe medication"
+msgstr "izberite časovno enoto, na katero pacientu predpisujete zdravilo"
+
+#: .\doctor\entry.html:119
+msgid ""
+"When editing is done, confirm by clicking <b>OK</b> button at the end of the "
+"line"
+msgstr "Na koncu urejanja potrdite zdravilo s pritiskom na gumb <b>OK</b>"
+
+#: .\doctor\entry.html:120
+msgid ""
+"Entered lines can be deleted by clicking on <b>X</b> at the beginning of the "
+"line"
+msgstr "Že vnešeno vrstico izbrišete s klikom na <b>X</b> na začetku vrstice"
+
+#: .\doctor\entry.html:127
+msgid "Code"
+msgstr "Koda"
+
+#: .\doctor\entry.html:156
+msgid "yes"
+msgstr "da"
+
+#: .\doctor\entry.html:157 .\doctor\questions.html:15
+#: .\doctor\questions.html.py:49
+msgid "no"
+msgstr "ne"
+
+#: .\doctor\entry.html:163 .\doctor\models.py:132
+msgid "per day"
+msgstr "na dan"
+
+#: .\doctor\entry.html:164 .\doctor\models.py:133
+msgid "per week"
+msgstr "na teden"
+
+#: .\doctor\entry.html:165 .\doctor\models.py:134
+msgid "per month"
+msgstr "na mesec"
+
+#: .\doctor\entry.html:173
+msgid "The medication is not in database"
+msgstr "Zdravila ni v bazi"
+
+#: .\doctor\entry.html:173
+msgid "Mail us"
+msgstr "Pišite nam"
+
+#: .\doctor\entry.html:180 .\doctor\entrydone.html:118
+msgid "Diseases and Conditions"
+msgstr "Podatki o nekaterih boleznih in stanjih"
+
+#: .\doctor\entry.html:213 .\doctor\entrydone.html:132
+msgid "Other Important Chronic Diseases"
+msgstr "Ostale pomembne kronične bolezni"
+
+#: .\doctor\entry.html:219 .\doctor\entrydone.html:134
+msgid "(none)"
+msgstr "(nobene)"
+
+#: .\doctor\entry.html:234 .\doctor\entrydone.html:139
+msgid "Additional Questions"
+msgstr "Dodatna vprašanja"
+
+#: .\doctor\entry.html:238 .\doctor\entrydone.html:144
+msgid "Possible duplication"
+msgstr "Možna duplikacija"
+
+#: .\doctor\entry.html:246 .\doctor\entrydone.html:152
+msgid "and"
+msgstr "in"
+
+#: .\doctor\entry.html:254 .\doctor\entrydone.html:160
+#: .\doctor\questions.html:12 .\doctor\questions.html.py:46
+msgid "YES"
+msgstr "DA"
+
+#: .\doctor\entry.html:256 .\doctor\entrydone.html:162 .\doctor\models.py:139
+msgid "No"
+msgstr "Ne"
+
+#: .\doctor\entrydone.html:32
+msgid "Thank you for your participation"
+msgstr "Hvala za sodelovanje"
+
+#: .\doctor\entrydone.html:34
+msgid "Please"
+msgstr "Prosimo"
+
+#: .\doctor\entrydone.html:34
+msgid "PRINT"
+msgstr "NATISNITE"
+
+#: .\doctor\entrydone.html:35
+msgid "this form"
+msgstr "ta obrazec"
+
+#: .\doctor\entrydone.html:36
+msgid ""
+"If changes in medication therapy are proposed, add a note for each change "
+"indicating whether you agree with proposition or not"
+msgstr ""
+"Če so predlagane spremembe zdravljenja, vpišite za vsako v opombo, ali se s "
+"spremembo strinjate ali ne"
+
+#: .\doctor\entrydone.html:42
+msgid "Date of Entry"
+msgstr "Datum vnosa"
+
+#: .\doctor\entrydone.html:49
+msgid ""
+"Some potentially inappropriate prescriptions according to STOPP/START v.2008 "
+"criteria were found"
+msgstr "Nekateri STOPP/START kriteriji po verziji iz leta 2008 so kršeni"
+
+#: .\doctor\entrydone.html:52 .\doctor\entrydone.html.py:74
+msgid "Criteria"
+msgstr "Kriterij"
+
+#: .\doctor\entrydone.html:53 .\doctor\entrydone.html.py:75
+msgid "Doctor's Notes"
+msgstr "Opombe zdravnika"
+
+#: .\doctor\entrydone.html:65
+msgid "No STOPP/START v.2008 criteria recommendations were found"
+msgstr "Ni predlogov glede na STOPP/START kriterije iz leta 2008"
+
+#: .\doctor\entrydone.html:71
+msgid ""
+"Some potentially inappropriate prescriptions according to STOPP/START v.2013 "
+"criteria were found"
+msgstr "Nekateri STOPP/START kriteriji po verziji iz leta 2013 so kršeni"
+
+#: .\doctor\entrydone.html:87
+msgid "No STOPP/START criteria v.2013 recommendations were found"
+msgstr "Ni predlogov glede na STOPP/START kriterije iz leta 2013"
+
+#: .\doctor\entrydone.html:93
+msgid "Continue management according to your clinical judgement"
+msgstr "Nadaljujte z zdravljenjem po lastni presoji"
+
+#: .\doctor\entrydone.html:98
+msgid ""
+"For each medication, consider whether there exists an appropriate (evidence-"
+"based) indication in this patient and whether the duration of treatment is "
+"not exceeded in medications where treatment duration is well defined."
+msgstr ""
+"Za vsako zdravilo ocenite, ali je prisotna ustrezna (z dokazi podprta) "
+"indikacija in ali je predpisovanja zdravila še naprej potrebno "
+"(kadar je trajanje predpisovanja vnaprej določeno)."
+
+#: .\doctor\entrydone.html:172
+msgid "Finish"
+msgstr "Zaključek"
+
+#: .\doctor\index.html:32
+msgid "Administration"
+msgstr "Administracija"
+
+#: .\doctor\index.html:34
+msgid ""
+"Load new tables into database. Tables must be preloaded to server in doc "
+"subdirectory."
+msgstr ""
+"Naloži nove tabele v bazo. Tabele morajo biti naložene na strežnik (v doc )"
+
+#: .\doctor\index.html:35
+msgid "LOAD DRUGS"
+msgstr "NALOŽI ZDRAVILA"
+
+#: .\doctor\index.html:36
+msgid "LOAD OTHER DATA"
+msgstr "NALOŽI OSTALE DATOTEKE"
+
+#: .\doctor\index.html:38
+msgid "Export data to local file"
+msgstr "Izvozi podatke v datoteko"
+
+#: .\doctor\index.html:38
+msgid "PRESS HERE!"
+msgstr "KLIKNITE TUKAJ!"
+
+#: .\doctor\index.html:42
+msgid "Doctors - overview"
+msgstr "Pregled zdravnikov"
+
+#: .\doctor\index.html:47
+msgid "Doctor"
+msgstr "Zdravnik"
+
+#: .\doctor\index.html:48
+msgid "Num. patients"
+msgstr "Št. pacientov"
+
+#: .\doctor\index.html:49
+msgid "First entry"
+msgstr "Prvi vnos"
+
+#: .\doctor\models.py:29
+msgid "First Name"
+msgstr "Ime"
+
+#: .\doctor\models.py:30
+msgid "Family Name"
+msgstr "Priimek"
+
+#: .\doctor\models.py:33
+msgid "Male"
+msgstr "Moški"
+
+#: .\doctor\models.py:34
+msgid "Female"
+msgstr "Ženska"
+
+#: .\doctor\models.py:52
+msgid "Patients"
+msgstr "Pacienti"
+
+#: .\doctor\models.py:138
+msgid "Yes"
+msgstr "Da"
+
+#: .\doctor\patient.html:35
+msgid "Patient data"
+msgstr "Podatki o pacientu"
+
+#: .\doctor\patient.html:45
+msgid "Add new entry"
+msgstr "Dodaj nov vnos"
+
+#: .\doctor\patient.html:49
+msgid "Time of entry"
+msgstr "Čas vnosa"
+
+#: .\doctor\patient.html:62
+msgid "View"
+msgstr "Pregled"
+
+#: .\doctor\questions.html:34
+msgid "Additional questions"
+msgstr "Dodatna vprašanja"
+
+#: .\doctor\questions.html:36
+msgid "Please answer a few additional questions"
+msgstr "Imamo nekaj dodatnih vprašanj"
+
+#: .\doctor\views.py:905
+msgid "Name"
+msgstr "Ime"
+
+#: .\doctor\views.py:906
+msgid "Surname"
+msgstr "Priimek"
+
+#: .\doctor\views.py:907
+msgid "Date of Birth"
+msgstr "Leto rojstva"
+
+#: .\registration\login.html:10
+msgid "Your username and password do not match. Please try again."
+msgstr ""
+"Vaše uporabniško ime in geslo se ne ujemata. Prosimo ponovno poskusite."
+
+#: .\registration\login.html:15
+msgid "Username"
+msgstr "Uporabniško ime"
+
+#: .\registration\login.html:18
+msgid "Password"
+msgstr "Geslo"
+
+#: .\registration\login.html:23
+msgid "LOGIN"
+msgstr "VSTOPITE"
+
+#~ msgid "Click here"
+#~ msgstr " Kliknite tu"

@@ -1,0 +1,201 @@
+﻿{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block scripts %}
+<script>
+function printElem(options) {
+     $('#toPrint').print();
+};
+	 
+$(function() {
+	$(".button").button();
+	
+	$("#printbutton").click(function() {
+		 //printElem({ printMode: 'popup', pageTitle: 'Start/stopp' });
+		 printElem( {} );
+		 return(false);
+	 });
+
+});
+</script>
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+em { color: red; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Thank you for your participation" %}!</h1>
+
+<p>{% trans "Please" %}, <a href="#" class="button" id="printbutton">{% trans "PRINT" %}</a> 
+{% trans "this form" %}. 
+{% trans "If changes in medication therapy are proposed, add a note for each change indicating whether you agree with proposition or not" %}.
+</p>
+
+<div id="toPrint">
+
+<h2>{% trans "Patient" %}: <em>{{ patient.first_name }} {{ patient.last_name }}</em>, ({{ patient.year_of_birth }}), ID : <em>{{ patient.id }}</em></h2>
+<h2>{% trans "Date of Entry" %}: <em>{{ entry.dt }}</em></h2>
+<hr/>
+
+{% if show_critera_violations %}
+
+    {% if instructions_v1 %}
+    
+        <h2><em>{% trans "Some potentially inappropriate prescriptions according to STOPP/START v.2008 criteria were found" %}:</em></h2>
+        <table border="1">
+        <tr>
+            <th>{% trans "Criteria" %}</th>
+            <th>{% trans "Doctor's Notes" %}</th>
+        </tr>
+        {% for ins in instructions_v1 %}
+        <tr>
+            <td>{{ ins }}</td>
+            <td>________________</td>
+        </tr>
+        {% endfor %}
+        </table>
+
+    {% else %}
+    
+        <h2><em>{% trans "No STOPP/START v.2008 criteria recommendations were found" %}</em></h2>
+    
+    {% endif %}
+        
+    {% if instructions_v2 == 'HIDE' %}
+    
+        <!-- not shown -->
+
+    {% elif instructions_v2 %}
+    
+        <h2><em>{% trans "Some potentially inappropriate prescriptions according to STOPP/START v.2013 criteria were found" %}:</em></h2>
+        <table border="1">
+        <tr>
+            <th>{% trans "Criteria" %}</th>
+            <th>{% trans "Doctor's Notes" %}</th>
+        </tr>
+        {% for ins in instructions_v2 %}
+        <tr>
+            <td>{{ ins }}</td>
+            <td>________________</td>
+        </tr>
+        {% endfor %}
+        </table>
+        
+    {% else %}
+    
+        <h2><em>{% trans "No STOPP/START criteria v.2013 recommendations were found" %}</em></h2>
+    
+    {% endif %}
+	
+{% else %}
+
+	<p>{% trans "Continue management according to your clinical judgement" %}.</p>
+	
+{% endif %}
+
+<hr/>
+<table>
+    <tr>
+        <td>
+            <img src="{{STATIC_URL}}images/exclamation_mark.jpg" alt="!" height="40" width="40"/>
+        </td>
+        <td>
+            <b>{% trans "For each medication, consider whether there exists an appropriate (evidence-based) indication in this patient and whether the duration of treatment is not exceeded in medications where treatment duration is well defined." %}</b>
+        </td>
+    </tr>
+
+<h2>{% trans "Medications" %}</h2>
+<table border="1">
+	<tr>
+		<th width="60%">{% trans "Medication" %}</th>
+		<th width="10%">{% trans "Dose" %}</th>
+		<th width="10%">{% trans "Time.unit" %}</th>
+	</tr>
+	{% for de in drugentries %}
+	<tr>
+		<td>{{ de.drug.name }}</td>
+		<td>{{ de.dose_amount }}</td>
+		<td>{{ de.get_dose_time_display }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% if ah_load > 0 %}
+<h2>{% trans "Antiholinergic load is" %} {{ ah_load }}:</h2>
+<table border="1">
+    <tr>
+		<th width="60%">{% trans "Medication" %}</th>
+		<th width="40%">{% trans "AH points" %}</th>
+	</tr>
+	{% for d in ah_list %}
+	<tr>
+		<td>{{ d.name }}</td>
+		<td>{{ d.load }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+<hr/>
+<h2>{% trans "Diseases and Conditions" %}</h2>
+
+<ul>
+{% for group_diseases in diseases_groups %}
+	{% for d in group_diseases.1 %}
+		{% if d.code in diseaseentries %}
+            <li id="disease">
+			{{ d.description }} 
+            </li>
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+</ul>
+
+<h2>{% trans "Other Important Chronic Diseases" %}</h2>
+<p>
+	{{ other_diseases|default_if_none:_("(none)")|default:_("(none)")|linebreaks }}
+</p>
+
+<hr/>
+{% if questions %}
+	<h2>{% trans "Additional Questions" %}</h2>
+    <ul>
+	{% for q in questions %}
+		<li>
+            {% if q.code == "V29" %}
+                {% trans "Possible duplication" %}:
+                <ul>
+                {% for dl in duplicates %}
+                    <li>                
+                    {% for dup in dl %}
+                        {% if forloop.last %}
+                            <b>{{ dup }}</b>
+                        {% else %}
+                            <b>{{ dup }}</b> {% trans "and" %}
+                        {% endif %}
+                    {% endfor %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}		
+			{% if q.code in questionentries %}
+				{{ q.getDescription|safe }} : <b>{% trans "YES" %}</b>
+			{% else %}
+				{{ q.getDescription|safe }} : {% trans "No" %}
+		   {% endif %}
+		</li>
+	{% endfor %}
+    </ul>
+	<hr/>
+{% endif %}
+
+</div> <!-- toPrint -->
+
+<p><a class="button" href="/doctor/{{ doctor.id }}">{% trans "Finish" %}</a></p>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+﻿{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="sl">
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">			
+		<!-- JQuery -->
+		<link href="{{STATIC_URL}}jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+		<script src="{{STATIC_URL}}jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+		<script src="{{STATIC_URL}}jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+		<script src="{{STATIC_URL}}jquery.print.js"></script>
+		
+		<!-- global css --->
+		<link href="{{STATIC_URL}}startstopp.css" rel="stylesheet">
+		
+		<!-- additional css -->
+		{% block styles %}{% endblock %}		
+		<!-- additional scripts -->
+		{% block scripts %}{% endblock %}
+
+		<title>{% block title %}{% trans "START/STOPP Study" %}{% endblock %}</title>
+	</head>
+
+	<body>
+		<div id="page-container">			
+			<div id="header">
+				<span class="logged-in">
+				{% if user.is_authenticated %}
+				{% trans "Logged in" %}: {{ user.username }}&#160; &#160;</span>
+				<a href="/logout"><span class="logout">{% trans "Logout" %}</span></a>
+				&nbsp; &nbsp;
+				<span class="home"><a href="/">{% trans "Home" %}</a></span>
+				{% else %}
+				{% endif %} 		
+				<br />
+				<div class="header">{% trans "START/STOPP Study" %}</div>
+                <div class="lang-top">              
+                    <form action="/i18n/setlang/" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}" />
+                        <select name="language">
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                        {% endfor %}
+                        </select>
+                        <input type="submit" value="Go" />
+                    </form>
+                </div>
+			</div>
+					
+			<div id="content">
+			{% block content %}{% endblock %}
+			</div>
+            
+            <div id="pagebottom"></div>
+
+			<div id="footer">
+				{% block footer %}
+				(c) 2013-2016 Eva Cedilnik Gorup
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

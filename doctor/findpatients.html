@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+<h1>{% trans "Results of the query" %}</h1>
+
+<p>{% trans "Number of patients-entries matching the query" %} : {{ numfound }}</p>
+
+<p>{% trans "Export data to local file" %}: <a href="/exportQueryCsv/{{ queryid }}">{% trans "PRESS HERE!" %}!</a><<p/>
+
+<hr/>
+
+<table>
+	<tr>
+        <th>{% trans "ID" %}</th>
+		<th>{% trans "Patient" %}</th>
+		<th>{% trans "Year of Birth" %}</th>
+		<th>{% trans "Gender" %}</th>
+		<th>{% trans "Contact" %}</th>
+		<th>{% trans "No. of Entries" %}</th>
+		<th>{% trans "First Entry" %}</th>
+        {% if root %}
+		    <th>{% trans "Status" %}</th>
+        {% endif %}
+		<th>&nbsp;</th>
+		{% if root %}		
+		<th>&nbsp;</th>
+		{% endif %}
+	</tr>
+	{% for p in patients %}
+	<tr>
+		<td>{{ p.id }} </td>
+		<td><a href="/doctor/{{p.doctor.id}}/{{ p.id }}">{{ p.first_name }} {{ p.last_name }}</a></td>
+		<td>{{ p.year_of_birth }}</td>
+		<td>{{ p.get_gender_display }}</td>
+		<td>{{ p.contact|default_if_none:"" }}</td>
+		<td>{{ p.entry__count }}</td>
+		<td>{{ p.entry_first|date:"d.m.Y" }}</td>
+        {% if root %}
+		    <td>{{ p.get_status_display }}</td>
+        {% endif %}
+		<td><a class="button" href="/doctor/{{p.doctor.id}}/{{ p.id }}/add">{% trans "Add entry" %}</a></td>
+		{% if root %}
+			<td><a href="/doctor/{{p.doctor.id}}/{{ p.id }}/delete.html">{% trans "Delete" %}</a></td>
+		{% endif %}
+		</td>		
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
